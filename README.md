@@ -133,7 +133,7 @@ Cost = 1 + 6
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-Search-Algo.git
+git clone https://github.com/SADMAN0433/AI-Search-Algo.git
 ```
 
 Move into the project directory:
