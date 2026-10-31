@@ -1,47 +1,56 @@
+ <div align="center">
+
 # AI Search Algorithms
 
-<div align="center">
+### Problem Solving by Search · Uninformed Search
 
-### Problem Solving by Search — Uninformed Search
+**A practical implementation and visualization of five fundamental blind search algorithms using Python.**
 
-**Exploring five fundamental search strategies through Python implementation and graph visualization.**
+<br>
 
-<p>
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Google_Colab-Notebook-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Google Colab">
-  <img src="https://img.shields.io/badge/NetworkX-Graph_Theory-1F6FEB?style=for-the-badge" alt="NetworkX">
-  <img src="https://img.shields.io/badge/Matplotlib-Visualization-11557C?style=for-the-badge" alt="Matplotlib">
-</p>
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white)
+![Google Colab](https://img.shields.io/badge/Google_Colab-Notebook-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)
+![NetworkX](https://img.shields.io/badge/NetworkX-Graph_Processing-1F6FEB?style=flat-square)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557C?style=flat-square&logo=plotly&logoColor=white)
+
+![Repository](https://img.shields.io/badge/Project-Academic_Assignment-64748B?style=flat-square)
+![Search](https://img.shields.io/badge/Category-Uninformed_Search-0F766E?style=flat-square)
 
 </div>
 
 ---
 
-## Overview
+## 01. Project Overview
 
-This project implements and visualizes five **Uninformed Search (Blind Search)** algorithms using Python.
+This project explores **Uninformed Search (Blind Search)** techniques through the implementation of five classical Artificial Intelligence search algorithms.
 
-All algorithms operate on a common directed, weighted search tree, starting from node `A` and searching for the goal node `F`.
+Each algorithm is implemented in Python and tested using a common directed, weighted search tree. The notebook visualizes node expansion, traversal order, and the resulting solution path.
 
-The notebook demonstrates how each algorithm explores the search space, expands nodes, and identifies a solution path.
+The primary objective is to understand how different search strategies explore a search space and how their behavior differs.
 
-## Algorithms
+## 02. Algorithms Implemented
 
-| # | Algorithm | Description |
+| No. | Algorithm | Search Approach |
 |:---:|---|---|
-| 01 | **Breadth-First Search (BFS)** | Explores nodes level by level using a queue. |
-| 02 | **Depth-First Search (DFS)** | Explores one branch deeply before backtracking. |
-| 03 | **Depth-Limited Search (DLS)** | Performs depth-first search within a specified depth limit. |
-| 04 | **Iterative Deepening DFS (IDDFS)** | Repeatedly performs depth-limited searches with increasing limits. |
-| 05 | **Uniform-Cost Search (UCS)** | Expands nodes according to their cumulative path cost. |
+| 01 | **Breadth-First Search (BFS)** | Explores the search space level by level. |
+| 02 | **Depth-First Search (DFS)** | Explores a branch deeply before backtracking. |
+| 03 | **Depth-Limited Search (DLS)** | Restricts depth-first exploration to a specified limit. |
+| 04 | **Iterative Deepening DFS (IDDFS)** | Repeats depth-limited searches with increasing limits. |
+| 05 | **Uniform-Cost Search (UCS)** | Expands the node with the lowest cumulative path cost. |
 
-## Search Tree
+## 03. Search Environment
 
-The following tree is shared by all five algorithms.
+All five algorithms use the same search tree.
 
-- **Initial State:** `A`
-- **Goal State:** `F`
-- **Edge Labels:** Transition costs
+| Parameter | Value |
+|---|---|
+| Initial State | `A` |
+| Goal State | `F` |
+| Total Nodes | `7` |
+| Search Structure | Directed, weighted tree |
+| Edge Weights | Positive transition costs |
+
+### Search Tree Visualization
 
 ```mermaid
 flowchart TD
@@ -56,25 +65,25 @@ flowchart TD
     style F fill:#f3d58b,stroke:#b88a26,color:#172033
 ```
 
-## Visualization
+## 04. Graph Visualization
 
-Graph visualization is implemented using **NetworkX** and **Matplotlib**.
+The notebook uses **NetworkX** and **Matplotlib** to represent the search process visually.
 
-Each search algorithm generates a visual representation of its exploration process.
+The visualization distinguishes between different node states:
 
-| Visual Element | Description |
+| Visual Indicator | Description |
 |---|---|
 | Light Blue | Node not yet expanded |
 | Light Green | Expanded node |
-| Light Gold | Node on the solution path |
-| Orange-Red Edge | Edge on the solution path |
-| Node Number | Order in which the node was expanded |
+| Light Gold | Node belonging to the solution path |
+| Orange-Red Edge | Edge belonging to the solution path |
+| Number inside a node | Node expansion order |
 
-IDDFS also displays the search process at successive depth limits.
+Each algorithm generates its own graph visualization. IDDFS additionally displays the search at successive depth limits.
 
-## Results
+## 05. Experimental Results
 
-The following results are obtained using the shared search tree.
+The following results are obtained from the implemented algorithms using the same search tree and left-to-right child ordering.
 
 | Algorithm | Expansion Order | Solution Path |
 |---|---|---|
@@ -84,32 +93,40 @@ The following results are obtained using the shared search tree.
 | IDDFS | Goal found at depth 2 | A → C → F |
 | UCS | A → C → G → B → D → F | A → C → F |
 
-**Uniform-Cost Search — Total Solution Cost**
+### UCS — Path Cost Calculation
+
+The solution path is:
 
 ```text
 A → C → F
-  = 1 + 6
-  = 7
+
+Cost = 1 + 6
+     = 7
 ```
 
-*Note: The tree contains a single route from A to F. UCS demonstrates cost-based node expansion, but this particular example does not compare multiple alternative paths to the goal.*
+**Total Path Cost: 7**
 
-## Tech Stack
+> Note: This tree has a single route from A to F. UCS demonstrates cumulative-cost-based node expansion, but this example does not compare alternative paths to the same goal.
 
-- **Language:** Python
-- **Environment:** Google Colab
-- **Graph Handling:** NetworkX
-- **Visualization:** Matplotlib
-- **Data Structures:** Queue, Stack, Dictionary and Priority Queue
+## 06. Technology Stack
 
-## Getting Started
+| Technology | Purpose |
+|---|---|
+| Python | Algorithm implementation |
+| Google Colab | Development and execution environment |
+| NetworkX | Graph construction and processing |
+| Matplotlib | Graph visualization |
+| `collections.deque` | BFS queue |
+| `heapq` | UCS priority queue |
 
-### Run in Google Colab
+## 07. Getting Started
 
-1. Open `AI_Search_Algo.ipynb`.
+### Run with Google Colab
+
+1. Open [`AI_Search_Algo.ipynb`](./AI_Search_Algo.ipynb).
 2. Open the notebook in Google Colab.
 3. Select **Runtime → Run all**.
-4. Explore the traversal outputs and visualizations.
+4. Review the algorithm outputs and visualizations.
 
 ### Run Locally
 
@@ -119,13 +136,13 @@ Clone the repository:
 git clone https://github.com/YOUR_USERNAME/AI-Search-Algo.git
 ```
 
-Navigate to the project directory:
+Move into the project directory:
 
 ```bash
 cd AI-Search-Algo
 ```
 
-Install the required libraries:
+Install the required packages:
 
 ```bash
 pip install networkx matplotlib
@@ -133,7 +150,7 @@ pip install networkx matplotlib
 
 Open the notebook using Jupyter Notebook or JupyterLab.
 
-## Repository Structure
+## 08. Repository Structure
 
 ```text
 AI-Search-Algo/
@@ -142,21 +159,32 @@ AI-Search-Algo/
 └── README.md
 ```
 
-## Learning Objectives
+## 09. Learning Outcomes
 
-- Understand the working principles of uninformed search algorithms.
-- Compare breadth-first and depth-first exploration.
-- Examine how depth limits affect search performance.
-- Understand iterative deepening through repeated depth-limited searches.
-- Explore cumulative path costs using Uniform-Cost Search.
-- Visualize node expansion and solution paths.
+This implementation provides practical exposure to:
+
+- Understanding uninformed search strategies.
+- Comparing BFS and DFS traversal behavior.
+- Implementing depth restrictions in DLS.
+- Understanding repeated depth exploration in IDDFS.
+- Working with cumulative path costs in UCS.
+- Visualizing search trees and node expansion.
 
 ---
 
+## Author
+
+**SADMAN ISLAM ARIAN**
+
+| Academic Information | Details |
+|---|---|
+| Student ID | `242031004` |
+| Project | AI Search Algorithms |
+| Subject Area | Artificial Intelligence |
+| Assignment Topic | Problem Solving by Search — Uninformed Search |
+
 <div align="center">
 
-**Academic Project · Artificial Intelligence**
-
-*Problem Solving by Search — Uninformed Search / Blind Search*
+**Built as an academic implementation of fundamental AI search techniques.**
 
 </div>
